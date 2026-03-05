@@ -1,6 +1,47 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+class Inventory {
+        private ArrayList<Item> items;
+        
+        public Inventory() {
+            items = new ArrayList<>();
+        }
+        
+        public void addItem(Item item) {
+            items.add(item);
+            System.out.println(item.name + " added to inventory!");
+        }
+        
+        public void showItems() {
+            System.out.println("\n=== INVENTORY ===");
+            if (items.isEmpty()) {
+                System.out.println("Inventory is empty!");
+            } else {
+                for (int i = 0; i < items.size(); i++) {
+                    System.out.println((i+1) + ". " + items.get(i).name);
+                }
+            }
+        }
+    }
+
+class Stage {
+    private int stageNumber;
+    private Random rand;
+    
+    public Stage(int stageNumber) {
+        this.stageNumber = stageNumber;
+        this.rand = new Random();
+    }
+    
+    public Enemy generateEnemy() {
+        String[] enemyNames = {"Goblin", "Orc", "Skeleton", "Dark Knight", "Dragon"};
+        String name = enemyNames[rand.nextInt(enemyNames.length)];
+        int difficulty = stageNumber + rand.nextInt(3);
+        return new Enemy(name, difficulty);
+    }
+}
+
 public class Game {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -76,29 +117,5 @@ public class Game {
         
         System.out.println("\nThanks for playing!");
         scanner.close();
-    }
-
-class Inventory {
-        private ArrayList<Item> items;
-        
-        public Inventory() {
-            items = new ArrayList<>();
-        }
-        
-        public void addItem(Item item) {
-            items.add(item);
-            System.out.println(item.name + " added to inventory!");
-        }
-        
-        public void showItems() {
-            System.out.println("\n=== INVENTORY ===");
-            if (items.isEmpty()) {
-                System.out.println("Inventory is empty!");
-            } else {
-                for (int i = 0; i < items.size(); i++) {
-                    System.out.println((i+1) + ". " + items.get(i).name);
-                }
-            }
-        }
     }
 }
