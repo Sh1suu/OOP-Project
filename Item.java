@@ -13,29 +13,27 @@ class Item {
 }
 
 class Weapon extends Item {
-    private int bonusDamage;
+   private int bonusDamage;
 
-    public Weapon(String name, int bonusDamage) {
-        super(name, "Deals extra damage");
-        this.bonusDamage = bonusDamage;
-    }
+   public Weapon(String var1, int var2) {
+      super(var1, "Deals extra damage");
+      this.bonusDamage = var2;
+   }
 
-    @Override
-    public void use() {
-        System.out.println("Equipped " + name + "! Attack +" + bonusDamage);
-    }
+   public void use() {
+      System.out.println("Equipped " + this.name + "! Attack +" + this.bonusDamage);
+   }
 }
 
 class Potion extends Item {
-    private int healAmount;
+   private int healAmount;
 
-    public Potion(String name, int healAmount){
-        super(name, "Restores HP");
-        this.healAmount = healAmount;
-    }
+   public Potion(String var1, int var2) {
+      super(var1, "Restores HP");
+      this.healAmount = var2;
+   }
 
-    @Override
-    public void use() {
-        System.out.println("Drank " + name + "! Heals " + healAmount + " HP");
-    }
+   public void use() {
+      System.out.println("Drank " + this.name + "! Healed " + this.healAmount + " HP");
+   }
 }
