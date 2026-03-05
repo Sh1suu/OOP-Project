@@ -48,12 +48,19 @@ class Player extends Character{
 
   public void gainExperience(int exp){   // to level up
     experience += exp;
+    System.out.println(name + " gains " + exp + " XP. (Total XP: " + experience + ")");
     if(experience >= 100){
-      level++;
-      experience = 0;
-      attackPower += 5;
-      System.out.println("Congratz! You are now level " +level);
+      levelUp();
     }
+  }
+
+  private void levelUp(){
+    level++;
+    experience = 0;
+    attackPower += 5;
+    maxHealth += 20;
+    health = maxHealth;
+    System.out.print("Congrats! " + name + " is now level " + level + "! (Attack: " + attackPower + ", Max HP: " + maxHealth + ")");
   }
 }
 
