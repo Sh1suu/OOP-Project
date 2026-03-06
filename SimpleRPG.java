@@ -17,13 +17,20 @@ class Inventory {
     public void showItems() {
         System.out.println("\n=== INVENTORY ===");
         if (items.isEmpty()) {
-            System.out.println("Inventory is empty!");
-        } else {
-            for (int i = 0; i < items.size(); i++) {
-                String type = (items.get(i) instanceof Potion) ? "[Potion]" : "[Weapon]";
-                System.out.println((i+1) + ". " + type + " " + items.get(i).name);
+    System.out.println("Inventory is empty!");
+    } else {
+        java.util.ArrayList<String> displayed = new java.util.ArrayList<>();
+        int displayNum = 1;
+        
+        for (Item item : items) {
+            if (!displayed.contains(item.name)) {
+                displayed.add(item.name);
+                String type = (item instanceof Potion) ? "[Potion]" : "[Weapon]";
+                System.out.println(displayNum + ". " + type + " " + item.name);
+                displayNum++;
             }
         }
+    }
     }
     
     public boolean isEmpty() {
